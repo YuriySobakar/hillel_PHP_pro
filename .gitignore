@@ -1,0 +1,32 @@
+# Игнорировать временные файлы ОС
+.DS_Store
+thumbs.db
+
+# Игнорировать файлы настроек IDE
+.vscode/
+.idea/
+
+# Игнорировать файлы окружения
+.env
+
+# Игнорировать каталоги с зависимостями
+vendor/
+
+# Игнорировать файлы кэша
+*.log
+
+#игнорировать Just
+Justfile
+
+# Ignore composer files
+composer.json
+composer.lock
+
+#ignore doker
+docker/
+docker-compose.yml
+
+#ignore previous tasks
+Create_ValueObject_RGB/
+spl_autoload
+Traits_conflict_solve
