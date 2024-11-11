@@ -1,17 +1,21 @@
 <?php
-require_once 'autoload.php';
+require_once 'CustomAutoload.php';
 
-use Classes\Developer\Developer; 
-use Classes\Tester\Tester as CurrentTester;
-use Classes\User\User as CurrentUser;
+use Classes\User\User;
+use Classes\CustomException\BadMethodRequest;
 
+$my_user = new User();
+$my_user->setName('Misha');
+$my_user->setAge(23);
 
-$my_dev = new Developer(1, 'John', 'Doe');
-$my_tester = new CurrentTester(2, 'Vasiliy', 'Клік');
-$my_user = new CurrentUser(3, 'user', 'user');
-
-var_dump($my_dev);
 echo '<br>';
-var_dump($my_tester);
+var_dump($my_user->getName());
 echo '<br>';
-var_dump($my_user);
+var_dump($my_user->getAge());
+echo '<br>';
+var_dump($my_user->getAll());
+echo '<br>';
+$my_user->getEmail();
+echo '<br>';
+$my_user->setEmail('my@ukr.net');
+
