@@ -1,34 +1,17 @@
 <?php
+require_once 'autoload.php';
 
-trait trait1 {
-  function test () {
-    return 1;
-  }
-}
+use Classes\Developer\Developer; 
+use Classes\Tester\Tester as CurrentTester;
+use Classes\User\User as CurrentUser;
 
-trait trait2 {
-  function test () {
-    return 2;
-  }
-}
 
-trait trait3 {
-  function test () {
-    return 3;
-  }
-}
+$my_dev = new Developer(1, 'John', 'Doe');
+$my_tester = new CurrentTester(2, 'Vasiliy', 'Клік');
+$my_user = new CurrentUser(3, 'user', 'user');
 
-class Test {
-  use trait1, trait2, trait3 {
-    trait1::test insteadOf trait2, trait3;
-    trait2::test as two;
-    trait3::test as three;
-  }
-
-  public function getSum () {
-    return $this->test() + $this->two() + $this->three();
-  }
-}
-
-$test = new Test();
-var_dump($test->getSum());
+var_dump($my_dev);
+echo '<br>';
+var_dump($my_tester);
+echo '<br>';
+var_dump($my_user);
