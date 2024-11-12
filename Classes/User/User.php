@@ -32,14 +32,10 @@ class User
 
   public function __call($method, $arguments) {
 
-    if (method_exists($this, $method)) {
-      return $this->$method(...$arguments);
+    if (!method_exists($this, $method)) {
+      throw new BadMethodRequest();
     }
 
-    try {
-      throw new BadMethodRequest();
-    } catch (BadMethodRequest $e) {
-      $e->showErrorMessage();
-    }
+    return $this->$method(...$arguments);
   }
 }
