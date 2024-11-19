@@ -1,0 +1,41 @@
+CREATE DATABASE auto_park_DB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE TABLE IF NOT EXISTS parks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  address VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS cars (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  park_id INT NOT NULL,
+  FOREIGN KEY (park_id) REFERENCES parks(id),
+  model VARCHAR(255) NOT NULL,
+  price FLOAT NOT NULL
+);
+
+CREATE TABLE if NOT EXISTS drivers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  car_id INT NOT NULL,
+  FOREIGN KEY (car_id) REFERENCES cars(id),
+  name VARCHAR(255) NOT NULL,
+  phone VARCHAR(16)
+);
+
+CREATE TABLE IF NOT EXISTS customers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  phone VARCHAR(16)
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  driver_id INT NOT NULL,
+  FOREIGN KEY (driver_id) REFERENCES drivers(id),
+  customer_id INT NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(id),
+  start VARCHAR(255) NOT NULL,
+  finish VARCHAR(255) NOT NULL,
+  total FLOAT
+);
+
+
+
